@@ -2,12 +2,15 @@ const inputEl = document.querySelector('#validation-input');
 
 inputEl.addEventListener('blur', checkCountSymbol);
 
+function changeStyles(element, remove, add) {
+  element.classList.remove(remove);
+  element.classList.add(add);
+}
+
 function checkCountSymbol() {
   if (Number(this.dataset.length) === this.value.length) {
-    inputEl.classList.remove('invalid');
-    inputEl.classList.add('valid');
+    changeStyles(inputEl, 'invalid', 'valid');
   } else {
-    inputEl.classList.remove('valid');
-    inputEl.classList.add('invalid');
+    changeStyles(inputEl, 'valid', 'invalid');
   }
 }
