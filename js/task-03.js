@@ -14,17 +14,12 @@ const images = [
 ];
 
 function createImgElement({ url, alt }) {
-  const itemEl = document.createElement('li');
-  const imgEl = document.createElement('img');
-  imgEl.classList.add('gallery-img');
-  imgEl.src = url;
-  imgEl.alt = alt;
-  itemEl.classList.add('gallery-item');
-  itemEl.append(imgEl);
-  return itemEl;
+  return `<li class="gallery-item">
+<img class="gallery-img" src="${url}" alt="${alt}">
+</li>`;
 }
 
-const gallery = images.map(createImgElement);
+const gallery = images.map(createImgElement).join('');
 
 const listImgEl = document.querySelector('.gallery');
-listImgEl.append(...gallery);
+listImgEl.insertAdjacentHTML('beforeend', gallery);
